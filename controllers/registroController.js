@@ -18,14 +18,15 @@ exports.registrar = {
     });
     registros.save();
     console.log('registro saved');
-
-    var users = new user({
-      nombre: request.payload.nombre,
-      correo: request.payload.correo
-    })
-    users.save();
-    console.log('user salvado');
-
+    console.log(request.payload.nombre);
+    if (typeof request.payload.nombre === "undefined" && typeof request.payload.correo === "undefined") {
+      var users = new user({
+        nombre: request.payload.nombre,
+        correo: request.payload.correo
+      })
+      users.save();
+      console.log('user salvado');
+      }
     return reply('ok');
   }
 }
