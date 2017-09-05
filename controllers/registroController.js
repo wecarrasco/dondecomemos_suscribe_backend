@@ -18,15 +18,16 @@ exports.registrar = {
     });
     registros.save();
     console.log('registro saved');
-    console.log(request.payload.nombre);
-    if (typeof request.payload.nombre === "undefined" && typeof request.payload.correo === "undefined") {
-      var users = new user({
-        nombre: request.payload.nombre,
-        correo: request.payload.correo
-      })
-      users.save();
-      console.log('user salvado');
+    if (typeof request.payload.nombre !== "undefined") {
+      if (typeof request.payload.correo !== "undefined") {
+        var users = new user({
+          nombre: request.payload.nombre,
+          correo: request.payload.correo
+        });
+        users.save();
+        console.log('user salvado');
       }
+    }
     return reply('ok');
   }
 }
