@@ -7,7 +7,11 @@ var auth = require('hapi-auth-cookie');
 var server = new hapi.Server();
 server.connection({
     port: process.env.PORT || 8000,
-    routes: {cors: true}
+    routes: {cors: {
+                    credentials: true,
+                    origin: ["*"]
+                }
+            }
 });
 
 mongoose.connect('mongodb://admin:admin@ds155325.mlab.com:55325/minabususcribe');
