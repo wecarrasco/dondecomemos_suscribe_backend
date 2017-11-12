@@ -10,7 +10,7 @@ server.connection({
     routes: {cors: true}
 });
 
-mongoose.connect('mongodb://admin:admin@ds127341.mlab.com:27341/correosadondecomemos');
+mongoose.connect('mongodb://admin:admin@ds155325.mlab.com:55325/minabususcribe');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));

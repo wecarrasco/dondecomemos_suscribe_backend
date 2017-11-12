@@ -1,5 +1,4 @@
 var registro = require('../schemas/registro');
-var user = require('../schemas/user');
 
 exports.registrar = {
   // auth: {
@@ -9,25 +8,11 @@ exports.registrar = {
   // },
   handler: function(request, reply){
     var registros = new registro({
-      nombreRestaurante: request.payload.nombreRestaurante,
-      pagina: request.payload.pagina,
-      tags: request.payload.tags,
-      direccion: request.payload.direccion,
-      latitud: request.payload.latitud,
-      longitud: request.payload.longitud
+      correo: request.payload.correo,
+      comentario: request.payload.comentario
     });
     registros.save();
     console.log('registro saved');
-    if (typeof request.payload.nombre !== "undefined") {
-      if (typeof request.payload.correo !== "undefined") {
-        var users = new user({
-          nombre: request.payload.nombre,
-          correo: request.payload.correo
-        });
-        users.save();
-        console.log('user salvado');
-      }
-    }
     return reply('ok');
   }
 }
