@@ -12,9 +12,16 @@ exports.registrar = {
       numero: request.payload.numero,
       correo: request.payload.correo,
     });
-    registros.save();
-    console.log('registro saved');
-    return reply('ok');
+    registros.save(function(err){
+      if (err) {
+        console.log("Error Wal-e: "+err);
+        return reply(boom.notAcceptable('ERROR WAL-E: ' + err));
+      }else{
+        console.log('registro saved');
+        return reply('ok');
+      }
+    });
+
   }
 }
 
