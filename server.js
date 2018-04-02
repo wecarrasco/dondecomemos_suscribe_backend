@@ -14,7 +14,7 @@ server.connection({
             }
 });
 
-mongoose.connect('mongodb://admin:admin@ds155325.mlab.com:55325/minabususcribe');
+mongoose.connect('mongodb://admin:admin@ds053164.mlab.com:53164/hondutronics-home');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));

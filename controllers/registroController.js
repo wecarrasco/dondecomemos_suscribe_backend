@@ -8,8 +8,9 @@ exports.registrar = {
   // },
   handler: function(request, reply){
     var registros = new registro({
+      nombre: request.payload.nombre,
+      numero: request.payload.numero,
       correo: request.payload.correo,
-      comentario: request.payload.comentario
     });
     registros.save();
     console.log('registro saved');
